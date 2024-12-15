@@ -1,0 +1,61 @@
+
+
+
+Footer Dynamic
+Order Redesign: integrate with profile
+middleware routes
+Skeleton | Nextjs 
+Contact us Responsive
+fetch data from db and save locally and refresh: faster 
+hide on scroll: NavBar
+Cloudinary Images & carousal
+migrate database
+Remove /admin from route
+Apple Look
+Reports
+Profile Page
+Default Pictures when image unavailable
+
+#--Queries
+VAT
+Color Scheme
+Logo
+Footer Links
+When to: Update Stock of products: order | shipped
+When to: Only 1 order per person?
+Privacy policy | About Us | Contact Us: Need Confirmation
+Top NavBar with social
+Tracking icon should be there?
+
+
+#--Deployment--#
+About-US Page
+Setup different account for mysql
+Change Contact number and email
+Triggers
+New: cloudinary | clerk | database | strapi | Resend
+Change Domain Name in Metadata | Image
+
+#--Client Requests--#
+Etsy review additions.
+We can click on banner. Min 3 banner on front.
+Youtube link on the description can be added.
+All the social media link on the top of page.
+Mobile version/desktop version and tab version should be checked.
+Tracking icon should be there.
+Price only dollar.
+
+# Test Skeleton
+    async function fetchData() {
+        // Simulate a delay
+        await new Promise((resolve) => setTimeout(resolve, 5000));
+        return { data: 'Hello, world!' };
+    }
+
+    await fetchData()
+
+
+# Dec and enc Checker for Breadcrumbs
+(dec(value).split("~")[1] != null && !/^[a-z-]+$/.test(value))
+? dec(value).split("~")[1].replaceAll("_", " ")
+: value.replaceAll("_", " ").replaceAll("-", " ")
