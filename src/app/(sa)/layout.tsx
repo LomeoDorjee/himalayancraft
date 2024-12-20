@@ -12,7 +12,7 @@ import { Toaster } from 'react-hot-toast';
 const inter = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN_URL ? process.env.NEXT_PUBLIC_DOMAIN_URL : "https://nepalcraft.com.np/"),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN_URL ? process.env.NEXT_PUBLIC_DOMAIN_URL : "https://himalayancraftshop.com/"),
     title: {
         default: "Craft Nepal - Manage",
         template: "%s"

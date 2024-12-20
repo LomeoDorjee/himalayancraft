@@ -12,7 +12,7 @@ import { PreNavBar } from "@/components/shared/PreNavBar";
 const inter = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN_URL ? process.env.NEXT_PUBLIC_DOMAIN_URL : "https://nepalcraft.com.np/"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN_URL ? process.env.NEXT_PUBLIC_DOMAIN_URL : "https://himalayancraftshop.com/"),
   title: {
     default: "Craft Nepal - Artistry from the Himalayas",
     template: "%s | Craft Nepal - Artistry from the Himalayas"
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description: "Shop for products with artistry from the Himalayas",
     type: "website",
     locale: "en_US",
-    url: process.env.NEXT_PUBLIC_DOMAIN_URL ? process.env.NEXT_PUBLIC_DOMAIN_URL : "https://nepalcraft.com.np/",
+    url: process.env.NEXT_PUBLIC_DOMAIN_URL ? process.env.NEXT_PUBLIC_DOMAIN_URL : "https://himalayancraftshop.com/",
     siteName: "Craft Nepal"
   }
 };

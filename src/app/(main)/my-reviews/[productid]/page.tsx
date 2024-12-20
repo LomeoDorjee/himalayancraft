@@ -8,7 +8,7 @@ export const metadata: Metadata = {
         absolute: "My Reviews"
     },
     description: "View My Reviews",
-    metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN_URL ? process.env.NEXT_PUBLIC_DOMAIN_URL : "https://nepalcraft.com.np/"),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN_URL ? process.env.NEXT_PUBLIC_DOMAIN_URL : "https://himalayancraftshop.com/"),
 };
 
 export default async function ReviewPage({ params, searchParams }: {

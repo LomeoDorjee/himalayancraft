@@ -14,7 +14,7 @@ import Tags from "@/constants/tagsConstant.js"
 export const metadata: Metadata = {
   title: "Products",
   description: "Browse all the available products in our site",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN_URL ? process.env.NEXT_PUBLIC_DOMAIN_URL : "https://nepalcraft.com.np/"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN_URL ? process.env.NEXT_PUBLIC_DOMAIN_URL : "https://himalayancraftshop.com/"),
 };
 
 const ListPage = async ({ searchParams }: { searchParams: any }) => {

@@ -28,7 +28,7 @@ export async function generateMetadata(
   const product = data.data[0]
 
   return {
-    metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN_URL ? process.env.NEXT_PUBLIC_DOMAIN_URL : "https://nepalcraft.com.np/"),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN_URL ? process.env.NEXT_PUBLIC_DOMAIN_URL : "https://himalayancraftshop.com/"),
     title: product.name,
     openGraph: {
       images: [
@@ -40,7 +40,7 @@ export async function generateMetadata(
       description: product.description,
       type: "website",
       locale: "en_US",
-      url: `https://nepalcraft.com.np/${params.slug}`,
+      url: `https://himalayancraftshop.com/${params.slug}`,
       siteName: "Craft Nepal"
     },
   }

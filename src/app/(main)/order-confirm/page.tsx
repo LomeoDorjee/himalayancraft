@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     absolute: "Order Confirm"
   },
   description: "Confirm your Order",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN_URL ? process.env.NEXT_PUBLIC_DOMAIN_URL : "https://nepalcraft.com.np/"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN_URL ? process.env.NEXT_PUBLIC_DOMAIN_URL : "https://himalayancraftshop.com/"),
 };
 
 export default async function OrderConfirmation() {

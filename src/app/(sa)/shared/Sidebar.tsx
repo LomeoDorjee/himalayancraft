@@ -1,4 +1,4 @@
-import { Barcode, ChevronDown, ChevronUp, FanIcon, Flower, GalleryHorizontal, GalleryVertical, Hammer, Home, HomeIcon, Layout, List, ListCheck, Mountain, Tag, User2 } from "lucide-react"
+import { Barcode, ChevronDown, ChevronUp, GalleryVertical, Home, Layout, ListCheck, Mountain, Tag, User2 } from "lucide-react"
 
 import {
     Sidebar,

@@ -5,7 +5,7 @@ import { LogoIcon } from "./Icons";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="py-10 px-4 lg:px-6 xl:px-32 2xl:px-64 bg-gray-100 text-sm mt-5 bg-gradient-to-tr from-slate-50 via-slate-200 to-slate-300">
+    <footer className="py-10 px-4 lg:px-6 xl:px-32 2xl:px-64 bg-gray-100 text-sm bg-gradient-to-tr from-slate-50 via-slate-200 to-slate-300">
 
       <div className="flex flex-col md:flex-row justify-between gap-10 md:gap-24 pb-8 max-w-screen-2xl mx-auto">
 
@@ -20,7 +20,7 @@ const Footer = () => {
           <div className="flex gap-2 flex-col flex-wrap">
             <p> Boudha, Kathmandu,</p>
             <p> Nepal - 44600</p>
-            <span className="font-semibold">support@nepalcraft.com</span>
+            <span className="font-semibold">support@himalayancraftshop.com</span>
             <span className="font-semibold">+977 - 9824114513</span>
           </div>
         </div>

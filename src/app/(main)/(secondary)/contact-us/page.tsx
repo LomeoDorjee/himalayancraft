@@ -20,9 +20,9 @@ const ContactUs = async () => {
 
                 <h1 className="text-3xl font-bold text-center pb-6">Contact Us</h1>
 
-                <div className="flex flex-row w-full gap-5">
+                <div className="flex flex-col w-full gap-5">
 
-                    <div className="flex flex-wrap w-1/2 gap-2">
+                    <div className="flex flex-col gap-2">
                         <section className="bg-white p-8 rounded-lg shadow-lg mb-6">
                             <h2 className="text-2xl font-semibold mb-4">Get in Touch</h2>
                             <p>We&apos;d love to hear from you! Whether you have a question about our products, need assistance, or just want to share your feedback, we&apos;re here to help.</p>
@@ -55,7 +55,7 @@ const ContactUs = async () => {
                         </section>
                     </div>
 
-                    <div className="flex w-1/2">
+                    <div className="">
 
                         <section className="bg-white p-8 rounded-lg shadow-lg mb-6 w-full">
                             <h2 className="text-2xl font-semibold mb-4">Send Us a Message</h2>
@@ -99,6 +99,7 @@ const ContactUs = async () => {
                         </div>
                     </div>
                 </section>
+
             </main>
 
         </div>
