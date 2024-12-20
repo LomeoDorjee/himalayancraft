@@ -7,11 +7,9 @@ export async function redeploy(formdata: FormData) {
 
     // SSH configuration
     const sshConfig = {
-        host: process.env.SSH_HOST, // Replace with your VPS IP/hostname
-        port: 22,           // Default SSH port
+        host: process.env.SSH_HOST,
+        port: 22,
         username: "root",
-        // privateKey: require("fs").readFileSync("/path/to/private/key"), // Private key for SSH
-        // Alternatively, use password-based authentication
         password: "This1$VPSPassword",
     };
 
@@ -21,6 +19,7 @@ export async function redeploy(formdata: FormData) {
         export NVM_DIR="$HOME/.nvm" &&
         [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" &&
         nvm use default &&
+        nvm run build &&
         pm2 restart hc
     `;
 
