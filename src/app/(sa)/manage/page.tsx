@@ -45,9 +45,10 @@ export default function Page() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 
         {
-          items.map(item => (
+          items.map((item, index) => (
             <Link
               href={item.url}
+              key={index}
               className="rounded-md border px-32 py-16 flex flex-col justify-between items-center text-3xl gap-4 text-slate-800 shadow-md hover:shadow-xl animate">
               <item.icon />
               {item.title}
