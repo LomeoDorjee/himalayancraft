@@ -1,4 +1,4 @@
-import { Barcode, ChevronDown, ChevronUp, FanIcon, Flower, GalleryHorizontal, GalleryVertical, Hammer, Home, HomeIcon, Layout, List, Mountain, Tag, User2 } from "lucide-react"
+import { Barcode, ChevronDown, ChevronUp, FanIcon, Flower, GalleryHorizontal, GalleryVertical, Hammer, Home, HomeIcon, Layout, List, ListCheck, Mountain, Tag, User2 } from "lucide-react"
 
 import {
     Sidebar,
@@ -17,6 +17,7 @@ import {
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { SignedIn, SignedOut, SignOutButton, UserButton } from "@clerk/nextjs"
 import { currentUser } from "@clerk/nextjs/server"
+import Link from "next/link"
 
 // Menu items.
 const items = [
@@ -43,7 +44,7 @@ const items = [
     {
         title: "Orders",
         url: "/manage/orders",
-        icon: Hammer,
+        icon: ListCheck,
     },
     {
         title: "Slider",
@@ -61,7 +62,7 @@ export async function AdminSidebar() {
             <SidebarHeader>
                 <SidebarMenu>
                     <SidebarMenuItem>
-                        <DropdownMenu>
+                        <DropdownMenu >
                             <DropdownMenuTrigger asChild>
                                 <SidebarMenuButton>
                                     <Mountain /> {process.env.NEXT_PUBLIC_APP_NAME}
@@ -86,10 +87,10 @@ export async function AdminSidebar() {
                             {items.map((item) => (
                                 <SidebarMenuItem key={item.title}>
                                     <SidebarMenuButton asChild>
-                                        <a href={item.url}>
+                                        <Link href={item.url} className="py-8 px-2">
                                             <item.icon />
                                             <span>{item.title}</span>
-                                        </a>
+                                        </Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                             ))}
@@ -116,7 +117,7 @@ export async function AdminSidebar() {
                                 className="w-[--radix-popper-anchor-width]"
                             >
                                 <DropdownMenuItem>
-                                    {user?.firstName} <UserButton />
+                                    <UserButton />  {user?.firstName}
                                 </DropdownMenuItem>
                                 <DropdownMenuItem>
                                     <SignOutButton />

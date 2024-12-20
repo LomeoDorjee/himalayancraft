@@ -13,8 +13,6 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
-import Categories from "../../constants/categoriesConstant.js"
-
 const SearchBar = ({ categories }: { categories: TY_Category[] }) => {
 
   const router = useRouter();
@@ -76,14 +74,14 @@ const SearchBar = ({ categories }: { categories: TY_Category[] }) => {
           />
           <Button
             type="submit"
-            className="text-gray-500 cursor-pointer bg-white p-1.5 pr-2 rounded-br-xs rounded-tr-xs shadow-sm">
+            className="text-gray-500 cursor-pointer p-1.5 pr-2 rounded-br-xs rounded-tr-xs shadow-sm">
             <SearchIcon />
           </Button>
         </form>
       </div>
 
       <div className="md:hidden flex items-center justify-end">
-        <button onClick={() => setIsSearchVisible(true)} className="dark:text-white">
+        <button onClick={() => setIsSearchVisible(true)} className="">
           <SearchIcon className="w-6 h-6 mx-1" />
         </button>
       </div>
@@ -104,7 +102,7 @@ const SearchBar = ({ categories }: { categories: TY_Category[] }) => {
               />
               <button
                 type="submit"
-                className="cursor-pointer bg-white p-2 rounded-br-2xl rounded-tr-2xl">
+                className="cursor-pointer p-2 rounded-br-2xl rounded-tr-2xl bg-transparent">
                 <SearchIcon />
               </button>
             </form>
