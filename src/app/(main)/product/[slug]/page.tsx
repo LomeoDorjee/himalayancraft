@@ -73,17 +73,24 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
 
         {/* IMG */}
         <div className="w-full lg:w-1/2 lg:sticky lg:top-24 lg:h-max">
-          <ProductImages items={images.data ?? []} />
+          <ProductImages items={images.data} />
         </div>
 
         {/* TEXTS */}
         <div className="w-full lg:w-1/2 rounded-md flex gap-3 flex-col">
 
-          <div className="bg-white  p-4 md:p-8">
+          <div className="bg-white p-4 md:p-8">
 
-            <h1 className="text-4xl font-medium">{product.name} <span className="bg-lama border text-sm rounded-full px-4 align-middle py-1 items-center">{product.ribbon}</span></h1>
+            <h1 className="text-2xl font-medium">{product.name} &nbsp;
+              {
+                product.ribbon.length > 0 &&
+                <span className="bg-lama border text-white text-sm rounded-full px-2 align-middle py-1 items-center">
+                  {product.ribbon}
+                </span>
+              }
+            </h1>
 
-            <span className="inline-flex gap-1 py-2">
+            <span className="inline-flex gap-1 py-1 align-middle items-center">
               {[...Array(5)].map((_, i) => (
                 <svg
                   key={i}
@@ -92,12 +99,14 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.97a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.39 2.46a1 1 0 00-.364 1.118l1.287 3.97c.3.921-.755 1.688-1.54 1.118l-3.39-2.46a1 1 0 00-1.175 0l-3.39 2.46c-.784.57-1.838-.197-1.54-1.118l1.287-3.97a1 1 0 00-.364-1.118l-3.39-2.46c-.783-.57-.38-1.81.588-1.81h4.18a1 1 0 00.95-.69l1.286-3.97z"></path>
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.97a1 1 0 00.95.69h4.18c.969 0 1.371 1.24.588 1.81l-3.39 2.46a1 1 0 00-.364 1.118l1.287 3.97c.3.921-.755 1.688-1.54 1.118l-3.39-2.46a1 1 0 00-1.175 0l-3.39 2.46c-.784.57-1.838-.197-1.54-1.118l1.287-3.97a1 1 0 00-.364-1.118l-3.39-2.46c-.783-.57-.38-1.81.588-1.81h4.18a1 1 T0 00.95-.69l1.286-3.97z"></path>
                 </svg>
               ))}
+              {
+                product.category.length > 0 &&
+                <span className="max-w-fit border-lama border text-sm rounded-xl px-4 py-1 block my-1 ml-5">{product.category}</span>
+              }
             </span>
-
-            <span className="max-w-fit border-lama border text-sm rounded-xl px-4 py-1 block my-4">{product.category}</span>
 
             <div className="text-gray-500"
               dangerouslySetInnerHTML={{
@@ -105,12 +114,12 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
               }}
             ></div>
 
-            <div className="h-[2px] bg-gray-100 my-4" />
+            <div className="h-[2px] bg-gray-100 my-3" />
 
             {/* Size */}
             {
               product.size &&
-              <div className="text-sm flex flex-nowrap items-center justify-start gap-6 my-2" >
+              <div className="text-sm flex flex-nowrap items-center justify-start gap-6 my-1" >
                 <p className="inline-flex items-center"><Ruler className="pr-1 mr-1" /> Size:</p> <span className="border border-gray-300 text-md p-2 px-6 bg-white-100 rounded-sm">{product.size}</span>
               </div>
             }
@@ -119,7 +128,7 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
             {/* Stock */}
             {
               product.stock &&
-              <div className="text-sm flex flex-nowrap items-center justify-start gap-6 py-4">
+              <div className="text-sm flex flex-nowrap items-center justify-start gap-6 py-2">
                 <p className="inline-flex items-center"><Layers className="pr-1 mr-1" /> Stock:</p>
                 <div>
                   <span className={`h-3 w-3 inline-flex rounded-full ${product.stock > 1 ? 'bg-green-500' : 'bg-green-500'}  opacity-100`}></span>
@@ -134,8 +143,8 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
             <div className="flex items-center justify-start">
               <div className="text-sm pr-4 inline-flex items-center"><CircleDollarSign className="pr-1 mr-1" /> Price: </div>
               {product.discount > 0 && !isNaN(product.discount) ? (
-                <div className="flex items-center gap-4 p-2 ">
-                  <h2 className="font-medium text-2xl text-lama tracking-wider">
+                <div className="flex items-center gap-4 p-1">
+                  <h2 className="font-medium text-xl text-lama tracking-wider">
                     {currencyFormat((product.price.toFixed(2) - product.discount.toFixed(2)))}
                   </h2>
                   <h3 className="text-md text-gray-500 line-through tracking-wide">
@@ -146,12 +155,12 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
                   </h5>
                 </div>
               ) : (
-                <h2 className="font-medium text-4xl text-lama tracking-wider">{currencyFormat(product.price.toString())}<span className="text-sm font-light">Best Price</span></h2>
+                <h2 className="font-medium text-xl text-lama tracking-wider">{currencyFormat(product.price.toString())}<span className="text-sm text-green-600">&nbsp; Best Price</span></h2>
               )}
 
             </div>
 
-            <div className="h-[2px] bg-gray-100 my-4" />
+            <div className="h-[2px] bg-gray-100 my-3" />
 
 
             <Add
@@ -165,20 +174,18 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
               slug={product.slug}
             />
 
-
-            <div className="h-[2px] bg-gray-100 my-4 " />
-
+            <div className="h-[2px] bg-gray-100 my-3" />
 
             <div className="text-sm flex flex-nowrap items-center justify-start gap-6">
               <p className="inline-flex items-center"><ListOrdered className="pr-1 mr-1" /> SKU:</p>
-              <div className="text-md p-2 uppercase">
+              <div className="text-md p-1 uppercase">
                 {product.sku}
               </div>
             </div>
 
             <div className="text-sm flex flex-nowrap items-center justify-start gap-6">
               <p className="inline-flex items-center"><Sailboat className="mr-1 pr-1" /> Ship:</p>
-              <div className="text-md p-2 uppercase">
+              <div className="text-md p-1 uppercase">
                 {product.shippinginfo}
               </div>
             </div>
@@ -187,7 +194,7 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
 
           <div className="bg-white p-4 md:p-8">
             <div className="flex items-start justify-start flex-col  ">
-              <div className="text-sm pr-4 font-semibold">Description</div>
+              <div className="text-md pr-4 pb-1 font-semibold">Product Detail</div>
               <LongDescription description={product.adddescription} />
             </div>
           </div>
@@ -207,15 +214,15 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
             &nbsp;Products
           </h1>
           <SimilarProducts
-            categoryId={parseInt(product.categoryid)} limit={5}
+            categoryId={parseInt(product.categoryid)} limit={4}
           />
         </div>
 
         <div className="w-full">
           {/* REVIEWS */}
           <h1 className="text-2xl">
-            <span className="border-b-4 rounded-l-lg border-lama">User</span>
-            &nbsp;Reviews</h1>
+            <span className="border-b-4 rounded-l-lg border-lama">User&nbsp;Re</span>
+            views</h1>
           <Suspense fallback={<ProductSkeleton />}>
             <Reviews productId={product.id} />
           </Suspense>

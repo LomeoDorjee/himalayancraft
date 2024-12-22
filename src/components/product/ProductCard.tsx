@@ -1,6 +1,6 @@
-import { enc } from "@/lib/utils";
+"use client"
+
 import { CldImage } from "next-cloudinary";
-import Image from "next/image";
 import Link from "next/link";
 
 type CardProps = {

@@ -29,10 +29,13 @@ export async function PreNavBar() {
                                 <Link href="/" className="block md:pr-4 md:pl-3 rounded bg-primary-700 bg-transparent text-primary-700 p-2 dark:text-white" aria-current="page">Home</Link>
                             </li>
                             <li className='hidden md:flex'>
+                                <Link href="/list" className="block md:pr-4 md:pl-3 rounded bg-primary-700 bg-transparent text-primary-700 p-2 dark:text-white" aria-current="page">List</Link>
+                            </li>
+                            <li className='hidden md:flex'>
                                 <Link href="/about-us" className="block md:pr-4 md:pl-3 rounded bg-primary-700 bg-transparent text-primary-700 p-2 dark:text-white" aria-current="page">About us</Link>
                             </li>
                             <li className='hidden md:flex'>
-                                <Link href="/list" className="block md:pr-4 md:pl-3 rounded bg-primary-700 bg-transparent text-primary-700 p-2 dark:text-white" aria-current="page">List</Link>
+                                <Link href="/contact-us" className="hidden md:block md:pr-4 md:pl-3 rounded bg-primary-700 bg-transparent text-primary-700 p-2 dark:text-white" aria-current="page">Contact us</Link>
                             </li>
                         </ul>
 

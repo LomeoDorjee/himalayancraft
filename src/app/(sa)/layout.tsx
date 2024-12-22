@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 import "../globals.css"
+import NextTopLoader from 'nextjs-toploader';
 
 import { ClerkProvider } from "@clerk/nextjs";
 import { SidebarProvider } from "@/components/ui/sidebar";
-import { AdminSidebar } from "@/app/(sa)/shared/Sidebar";
+import { AdminSidebar } from "./shared/Sidebar";
 import AdminNavbar from "./shared/AdminNavbar";
 
 import { Toaster } from 'react-hot-toast';
@@ -33,6 +34,21 @@ export default function RootLayout({
         >
             <html lang="en">
                 <body className={`${inter.className} h-screen`}>
+                    <NextTopLoader
+                        color="#2299DD"
+                        initialPosition={0.08}
+                        crawlSpeed={200}
+                        height={3}
+                        crawl={true}
+                        showSpinner={true}
+                        easing="ease"
+                        speed={200}
+                        shadow="0 0 10px #2299DD,0 0 5px #2299DD"
+                        template='<div class="bar" role="bar"><div class="peg"></div></div> 
+                        <div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+                        zIndex={1600}
+                        showAtBottom={false}
+                    />
                     <Toaster position="bottom-center" />
                     <SidebarProvider>
                         <AdminSidebar />

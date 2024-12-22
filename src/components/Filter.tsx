@@ -36,7 +36,7 @@ const Filter = ({ categories, tags }: {
     if (min > 0) {
       params.set("min", min.toString());
     }
-    if (min > 0) {
+    if (max > 0) {
       params.set("max", max.toString());
     }
     replace(`${pathname}?${params.toString()}`);
@@ -76,77 +76,15 @@ const Filter = ({ categories, tags }: {
   return (
     <div className="flex flex-row justify-between w-full">
 
-      <div className="hidden gap-6 flex-wrap">
-        <select
-          name="type"
-          id=""
-          className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]"
-          onChange={handleFilterChange}
-        >
-          <option>Type</option>
-          <option value="physical">Physical</option>
-          <option value="digital">Digital</option>
-        </select>
-        <input
-          type="text"
-          name="min"
-          placeholder="min price"
-          className="text-xs rounded-2xl pl-2 w-24 ring-1 ring-gray-400"
-          onChange={handleFilterChange}
-        />
-        <input
-          type="text"
-          name="max"
-          placeholder="max price"
-          className="text-xs rounded-2xl pl-2 w-24 ring-1 ring-gray-400"
-          onChange={handleFilterChange}
-        />
-
-        {/* Filter Categories */}
-        <select
-          name="cat"
-          className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]"
-          onChange={handleFilterChange}
-        >
-          <option value='all'>All Category</option>
-          {
-            categories && categories.map(cat => (
-              <option value={cat.title + '#' + cat.id} key={cat.id}>{cat.title}</option>
-            ))
-          }
-        </select>
-        <select
-          name=""
-          id=""
-          className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]"
-        >
-          <option>All Filters</option>
-        </select>
-      </div>
-
-      <div className="hidden">
-        <select
-          name="sort"
-          id=""
-          className="py-2 px-4 rounded-2xl text-xs font-medium bg-white ring-1 ring-gray-400"
-          onChange={handleFilterChange}
-        >
-          <option value="none">Sort By</option>
-          <option value="asc price">Price (low to high)</option>
-          <option value="desc price">Price (high to low)</option>
-          <option value="asc updated_at">Newest</option>
-          <option value="desc updated_at">Oldest</option>
-        </select>
-      </div>
-
       <div className="w-full">
-        <h2 className="text-md font-semibold m-2 flex flex-row justify-between">
+        <h2 className="text-xl font-semibold px-2 my-2 flex flex-row justify-between text-center">
           <span>Filters</span>
           <List onClick={() => setToogleFilter(!toogleFilter)} className="block md:hidden" />
         </h2>
-        <hr />
         <div className={`mb-4 px-2 max-sm:${toogleFilter ? "block" : "hidden"} transition-all duration-300`}>
-          <Accordion type="multiple" className="w-full" defaultValue={["item-1", "item-2"]}>
+          <Accordion type="multiple" className="w-full"
+          // defaultValue={["item-1", "item-2"]}
+          >
             <AccordionItem value="item-1">
               <AccordionTrigger>Category</AccordionTrigger>
               <AccordionContent>
@@ -180,7 +118,7 @@ const Filter = ({ categories, tags }: {
             <AccordionItem value="item-2">
               <AccordionTrigger>Price Range</AccordionTrigger>
               <AccordionContent>
-                <MultiRangeSlider min={0} max={100} onChange={handleRangeChange} />
+                <MultiRangeSlider min={0} max={10000} onChange={handleRangeChange} />
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">

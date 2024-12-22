@@ -174,7 +174,7 @@ const ProductList = ({
           </>
         )
       }
-      <div className="py-4 pt-6 grid gap-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 justify-between">
+      <div className="py-2 pt-4 grid gap-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-4 justify-between">
         {filteredProducts.length > 0 ? filteredProducts.map((product: TY_Product, index: React.Key) => (
 
           <ProductCard

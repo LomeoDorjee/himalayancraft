@@ -1,11 +1,5 @@
-
-
-
 Footer Dynamic
 Order Redesign: integrate with profile
-Skeleton | Nextjs 
-Contact us Responsive
-fetch data from db and save locally and refresh: faster 
 hide on scroll: NavBar
 Cloudinary Images & carousal
 migrate database
@@ -14,6 +8,8 @@ Apple Look
 Reports
 Profile Page
 Default Pictures when image unavailable
+npm cache clean --force
+
 
 #--Queries
 VAT

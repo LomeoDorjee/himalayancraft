@@ -47,7 +47,7 @@ const MultiRangeSlider: React.FC<MultiRangeSliderProps> = ({ min, max, onChange 
     }, [minVal, maxVal, onChange]);
 
     return (
-        <div className="relative w-full py-4">
+        <div className="relative w-full py-4 my-2">
             <input
                 type="range"
                 min={min}
@@ -82,11 +82,11 @@ const MultiRangeSlider: React.FC<MultiRangeSliderProps> = ({ min, max, onChange 
             <div className="relative h-5">
                 <div className="absolute top-0 w-full py-5">
                     <div className="flex flex-row gap-2 justify-between items-center">
-                        <div className="text-lg w-2/5">
-                            {currencyFormat(minVal)} <span className='text-xs'>Min</span>
+                        <div className="text-sm w-5/12">
+                            <span className='text-sm'>Min</span> <br /> {currencyFormat(minVal)}
                         </div>
-                        <span className="text-lg w-1/5 text-center">-</span>
-                        <div className="text-lg w-2/5 text-right"><span className='text-xs'>Max </span> {currencyFormat(maxVal)}</div>
+                        <span className="text-sm w-2/12 text-center">-</span>
+                        <div className="text-sm w-5/12 text-right"><span className='text-xs'>Max </span> <br /> {currencyFormat(maxVal)}</div>
                     </div>
 
                 </div>
