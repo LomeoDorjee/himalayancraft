@@ -85,9 +85,9 @@ export default function EditCart({
                 </div>
             </div>
             <div className="text-end md:order-4 md:w-32">
-                <p className="font-medium text-gray-900 dark:text-white text-xl">
+                <p className="font-medium text-gray-900 dark:text-white text-xl flex flex-col items-center justify-center">
+                    <p>{currencyFormat(quantity * (item.price.toFixed(2) - item.discount.toFixed(2)))}</p>
                     <span className="text-xs text-slate-400 line-through">{currencyFormat(quantity * (item.price.toFixed(2)))}</span>
-                    &nbsp;{currencyFormat(quantity * (item.price.toFixed(2) - item.discount.toFixed(2)))}
                 </p>
             </div>
         </div>

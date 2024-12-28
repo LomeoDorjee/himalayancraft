@@ -7,20 +7,13 @@ import React from 'react';
 export const metadata: Metadata = {
     title: "About Us",
     description: "About our organisation. Our values and Missions.",
-    metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN_URL ? process.env.NEXT_PUBLIC_DOMAIN_URL : "https://acp.org.np/"),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN_URL ? process.env.NEXT_PUBLIC_DOMAIN_URL : "https://himalayancraftshop.com/"),
 };
 
 const AboutUs = async () => {
-    async function fetchData() {
-        // Simulate a delay
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-        return { data: 'Hello, world!' };
-    }
-
-    await fetchData()
 
     return (
-        <div className=" text-gray-800 max-w-screen-xl mx-auto text-xl px-2">
+        <div className="px-4 py-2 lg:px-6 xl:px-32 2xl:px-64 ">
             <Breadcrumbs />
             <h1 className="text-4xl font-bold text-center">About Us</h1>
 

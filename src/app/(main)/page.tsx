@@ -28,7 +28,7 @@ const HomePage = async () => {
               if (index < 8)
                 return (
                   <Link
-                    href={`/list?tag=${tag.name}`}
+                    href={`/list?tags=${tag.name}`}
                     key={index}
                     className="text-sm md:text-lg rounded-lg border-1 border-lg bg-white p-2 md:p-3 text-center hover:font-bold transition-all duration-300">{tag.name}</Link>
                 )

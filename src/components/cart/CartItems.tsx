@@ -16,18 +16,34 @@ export default function CartItems() {
                 {
                     state.items.length > 0 ? state.items.map(item => (
                         <div key={item.productid} className="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
-                            <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-4 md:space-y-0">
-                                <Link
-                                    href={'/' + item.slug}
-                                    className="shrink-0 md:order-1">
-                                    <Image
-                                        className="h-20 w-20"
-                                        src={item.banner}
-                                        alt="product-image"
-                                        width={200}
-                                        height={200}
-                                    />
-                                </Link>
+                            <div className="space-y-4 flex flex-col md:flex-row md:items-center md:justify-between md:gap-4 md:space-y-0">
+                                <div className="flex gap-4 justify-between items-center">
+                                    <Link
+                                        href={'/' + item.slug}
+                                        className="shrink-0 md:order-1">
+                                        <Image
+                                            className="h-20 w-20"
+                                            src={item.banner}
+                                            alt="product-image"
+                                            width={200}
+                                            height={200}
+                                        />
+                                    </Link>
+
+                                    <div className="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
+                                        <Link
+                                            href={'/' + item.slug}
+                                            className="text-base font-medium text-gray-900 hover:underline dark:text-white"
+                                        >
+                                            {item.name}
+                                        </Link>
+
+                                        <div className="flex items-end gap-4">
+                                            <RemoveItem item={JSON.stringify(item)} />
+                                        </div>
+                                    </div>
+
+                                </div>
 
 
                                 <label className="sr-only">Choose quantity:</label>
@@ -43,18 +59,7 @@ export default function CartItems() {
                                     slug={item.slug}
                                 />
 
-                                <div className="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
-                                    <Link
-                                        href={'/' + item.slug}
-                                        className="text-base font-medium text-gray-900 hover:underline dark:text-white"
-                                    >
-                                        {item.name}
-                                    </Link>
 
-                                    <div className="flex items-end gap-4">
-                                        <RemoveItem item={JSON.stringify(item)} />
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     )) : (<>Cart Empty</>)

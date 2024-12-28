@@ -7,13 +7,13 @@ import React from 'react';
 export const metadata: Metadata = {
     title: "Privacy Policy",
     description: "Read and acknowledge our privacy policy",
-    metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN_URL ? process.env.NEXT_PUBLIC_DOMAIN_URL : "https://acp.org.np/"),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_DOMAIN_URL ? process.env.NEXT_PUBLIC_DOMAIN_URL : "https://himalayancraftshop.com/"),
 };
 
 const Privacy = async () => {
 
     return (
-        <div className=" text-gray-800 max-w-screen-xl mx-auto">
+        <div className="px-4 py-2 lg:px-6 xl:px-32 2xl:px-64 ">
             <Breadcrumbs />
 
             <div className="p-2">

@@ -10,7 +10,7 @@ const CartModal = () => {
   const { removeItemFromCart } = useCartActions();
 
   const calculateTotal = (items: TY_CartItem[]): number => {
-    return items.length > 0 ? items.reduce((total, item) => total + ((item.price) - (item.discount) * item.quantity), 0) : 0;
+    return items.length > 0 ? items.reduce((total, item) => total + ((item.price - item.discount) * item.quantity), 0) : 0;
   };
 
   const total = calculateTotal(state.items);

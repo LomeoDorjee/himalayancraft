@@ -6,6 +6,7 @@ import { useUser } from "@clerk/nextjs";
 import { toast } from "@/hooks/use-toast";
 import Link from "next/link";
 import { LogIn } from "lucide-react";
+import { currencyFormat } from "@/lib/utils";
 
 interface AddToCartProps {
   productId: number,
@@ -89,8 +90,8 @@ const Add = ({
     <div className="flex flex-col gap-4">
       <h4 className="font-medium">Choose a Quantity</h4>
       <div className="flex justify-between">
-        <div className="flex items-center gap-4">
-          <div className="bg-gray-100 py-1 px-4 rounded-3xl flex items-center justify-between w-32">
+        <div className="flex items-center gap-2 flex-wrap justify-center md:justify-start flex-col md:flex-row">
+          <div className="bg-gray-100 py-1 px-4 rounded-3xl flex items-center justify-between w-32 order-2 md:order-1">
             <button
               className="cursor-pointer text-xl disabled:cursor-not-allowed disabled:opacity-20"
               onClick={() => handleQuantity("d")}
@@ -108,9 +109,9 @@ const Add = ({
             </button>
           </div>
           {stockNumber < 1 ? (
-            <div className="text-xs">Product is out of stock</div>
+            <div className="text-xs order-1 md:order-2">Product is out of stock</div>
           ) : (
-            <div className="text-xs">
+            <div className="text-xs order-1 md:order-2">
               {
                 stockNumber > 10 ? (
                   <div>
@@ -129,13 +130,16 @@ const Add = ({
             </div>
           )}
         </div>
-        <button
-          onClick={() => addToCart()}
-          disabled={state.isLoading}
-          className="w-36 text-sm rounded-3xl ring-1 ring-lama text-lama py-2 px-4 hover:bg-lama hover:text-white disabled:cursor-not-allowed disabled:bg-pink-200 disabled:ring-0 disabled:text-white disabled:ring-none"
-        >
-          Add to Cart
-        </button>
+        <div className="flex gap-2 justify-center md:justify-start items-center flex-wrap flex-col md:flex-row">
+          <p className="text-xs text-lama transition-all duration-1000 text-center">{currencyFormat(quantity * (mainItem.price - mainItem.discount))}</p>
+          <button
+            onClick={() => addToCart()}
+            disabled={state.isLoading || stockNumber < 1}
+            className="w-36 text-sm rounded-3xl ring-1 ring-lama text-lama py-2 px-4 hover:bg-lama hover:text-white disabled:cursor-not-allowed disabled:bg-pink-200 disabled:ring-0 disabled:text-white disabled:ring-none transition-all"
+          >
+            Add to Cart
+          </button>
+        </div>
       </div>
     </div>
   );

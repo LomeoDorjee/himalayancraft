@@ -84,7 +84,7 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
             <h1 className="text-2xl font-medium">{product.name} &nbsp;
               {
                 product.ribbon.length > 0 &&
-                <span className="bg-lama border text-white text-sm rounded-full px-2 align-middle py-1 items-center">
+                <span className="bg-lama border text-white text-sm rounded-full px-2 align-middle py-1 items-center text-nowrap">
                   {product.ribbon}
                 </span>
               }
@@ -104,7 +104,7 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
               ))}
               {
                 product.category.length > 0 &&
-                <span className="max-w-fit border-lama border text-sm rounded-xl px-4 py-1 block my-1 ml-5">{product.category}</span>
+                <span className="max-w-fit border-lama border text-xs rounded-xl px-3 py-0.5 block ml-5">{product.category}</span>
               }
             </span>
 

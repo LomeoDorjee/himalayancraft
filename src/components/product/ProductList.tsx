@@ -45,14 +45,20 @@ const ProductList = ({
     let filteredData = products
 
     if (searchParams?.cat && searchParams?.cat != 'all') {
+      const categoriesArray: string[] = searchParams.cat.split(',').map((cat: string) => cat.trim().toLowerCase());
       filteredData = products.filter(product => {
-        return product.categoryslug === searchParams.cat;
+        // return product.categoryslug.toLowerCase() === searchParams.cat.toLowerCase();
+        return categoriesArray.some((category) => category === product.categoryslug.toLowerCase());
       });
     }
 
     if (searchParams?.tags && searchParams?.tags != 'all') {
+      const tagsArray: string[] = searchParams.tags.split(',').map((tag: string) => tag.trim().toLowerCase());
       filteredData = filteredData.filter(product => {
-        return product.tags === searchParams.tags;
+        // return product.tags?.toLowerCase().includes(searchParams.tags.toLowerCase());
+        return product.tags?.toLowerCase().split(',').some(productTag =>
+          tagsArray.some(searchTag => productTag.trim().toLowerCase().includes(searchTag))
+        );
       });
     }
 
@@ -71,12 +77,14 @@ const ProductList = ({
     if (searchParams?.name && searchParams?.name.length > 0) {
       filteredData = filteredData.filter(product => {
         return product.name.toLowerCase().includes(searchParams.name.toLowerCase())
+          || product.description.toLowerCase().includes(searchParams.name.toLowerCase())
+          || product.adddescription.toLowerCase().includes(searchParams.name.toLowerCase())
       });
     }
 
     if (categoryId && typeof categoryId === 'string' && categoryId != "all") {
       filteredData = filteredData.filter(product => {
-        return product.categoryslug === categoryId;
+        return product.categoryslug.toLowerCase() === categoryId.toLowerCase();
       });
     } else if (categoryId && categoryId != 0 && typeof categoryId === 'number') {
       filteredData = filteredData.filter(product => {
@@ -161,12 +169,15 @@ const ProductList = ({
       {
         !limit && (
           <>
-            <div className="my-2 flex flex-nowrap items-end justify-between">
-              <h1 className="widgettitle font-semibold text-2xl ">
-                Products {searchParams?.name ? `for "${searchParams.name}"` : `Result`}
+            <div className="my-2 flex flex-nowrap items-center justify-between">
+              <h1 className="font-semibold text-2xl md:flex hidden">
+                Results {searchParams?.name ? `for "${searchParams.name}"` : `Result`}
+              </h1>
+              <h1 className="font-semibold text-lg md:hidden">
+                Results {searchParams?.name ? `for "${(searchParams.name.length > 16) ? searchParams.name.slice(0, 14) + ".." : searchParams.name}"` : `Result`}
               </h1>
               <div className="text-sm font-light flex flex-nowrap gap-2 items-center justify-between">
-                <label>Per Page:</label>
+                <label className="hidden md:flex">Per Page:</label>
                 <Perpage />
               </div>
             </div>

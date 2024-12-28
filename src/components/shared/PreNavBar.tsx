@@ -43,15 +43,17 @@ export async function PreNavBar() {
                         <NavigationMenu className='z-50'>
                             <NavigationMenuList>
                                 <NavigationMenuItem>
-                                    <NavigationMenuTrigger className='md:pr-2 md:pl-3 rounded bg-primary-700 bg-transparent text-primary-700 p-2 dark:text-white'>Categories</NavigationMenuTrigger>
+                                    <NavigationMenuTrigger className='md:pr-2 md:pl-3 rounded bg-primary-700 bg-transparent text-primary-700 p-2 dark:text-white w-full'>Categories</NavigationMenuTrigger>
                                     <NavigationMenuContent>
 
-                                        <ul className="flex gap-5 px-1 flex-col py-5 mx-5 text-nowrap">
-                                            <li className='px-2'>
+                                        <ul
+                                            // className="grid gap-5 px-1 grid-cols-2 py-5 mx-4" 
+                                            className="grid w-[300px] gap-1 p-4 md:w-[400px] grid-cols-2">
+                                            <li className='p-1 py-3 leading-none no-underline outline-none hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground rounded-lg'>
                                                 <Link
                                                     href={`/category/all`}
                                                     className=
-                                                    "block space-y-1 rounded-md px-1 transition-all hover:underline hover:underline-offset-1 cursor-pointer text-sm font-medium"
+                                                    "block space-y-1 rounded-md px-1 transition-all hover:underline hover:underline-offset-2 cursor-pointer text-sm font-medium"
                                                 >
                                                     All Products
                                                 </Link>
@@ -59,11 +61,11 @@ export async function PreNavBar() {
                                             {
                                                 categories.length > 0 ?
                                                     categories.map((cat: TY_Category, index: number) => (
-                                                        <li key={index} className='px-2'>
+                                                        <li key={index} className='p-1 py-3 transition-all leading-none no-underline outline-none hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground rounded-lg'>
                                                             <Link
                                                                 href={`/category/${cat.slug}`}
                                                                 className=
-                                                                "block space-y-1 rounded-md px-1 transition-all hover:underline hover:underline-offset-1 cursor-pointer text-sm font-medium"
+                                                                "block space-y-1 rounded-md px-1 cursor-pointer text-sm font-medium"
                                                             >
                                                                 {cat.title}
                                                             </Link>

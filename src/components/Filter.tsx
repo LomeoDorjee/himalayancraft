@@ -2,7 +2,7 @@
 
 import { currencyFormat } from "@/lib/utils";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -20,7 +20,7 @@ const Filter = ({ categories, tags }: {
   const searchParams = useSearchParams();
   const { replace } = useRouter();
 
-  const [toogleFilter, setToogleFilter] = useState<boolean>(true);
+  const [toogleFilter, setToogleFilter] = useState<boolean>(false);
 
   const handleFilterChange = (
     e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
@@ -59,6 +59,8 @@ const Filter = ({ categories, tags }: {
   }, [checkedItems, pathname, replace, searchParams]);
 
   const [checkedTags, setCheckedTags] = useState<string[]>([]);
+  const isInitialRender = useRef(true);
+
   const handleTagChange = (id: string) => {
     setCheckedTags(prevItems =>
       prevItems.includes(id)
@@ -68,9 +70,16 @@ const Filter = ({ categories, tags }: {
   };
 
   useEffect(() => {
+    if (isInitialRender.current) {
+      setTimeout(() => {
+        isInitialRender.current = false; // Mark initial render as done
+      }, 1000);
+      return;
+    }
     const params = new URLSearchParams(searchParams);
     params.set("tags", checkedTags.join(","));
     replace(`${pathname}?${params.toString()}`);
+    console.log("Triggered")
   }, [checkedTags, pathname, replace, searchParams]);
 
   return (

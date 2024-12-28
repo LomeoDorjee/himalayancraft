@@ -15,12 +15,12 @@ export const metadata: Metadata = {
 export default async function Mycart() {
 
     return (
-        <section className="bg-white antialiased dark:bg-gray-900 px-4 py-2 lg:px-6 xl:px-32 2xl:px-64 ">
+        <section className="px-4 py-2 lg:px-6 xl:px-32 2xl:px-64 ">
             <Breadcrumbs />
             <div className="">
-                <h2 className="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Shopping Cart</h2>
+                <h2 className="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl text-center">Shopping Cart</h2>
 
-                <div className="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
+                <div className="mt-4 md:gap-6 lg:flex lg:items-start xl:gap-8">
                     <div className="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
                         <CartItems />
 
@@ -28,13 +28,13 @@ export default async function Mycart() {
                         <div className="hidden xl:mt-8 xl:block pt-8">
                             <div className="w-full">
                                 <h1 className="text-2xl">
-                                    <span className="border-b-4 rounded-l-lg border-lama">
+                                    <span className="border-b-2 rounded-l-lg border-lama">
                                         People also Bou
                                     </span>
                                     ght
                                 </h1>
                                 <SimilarProducts
-                                    categoryId={parseInt(process.env.FEATURED_PRODUCTS_FEATURED_CATEGORY_ID ?? "1")} limit={5}
+                                    categoryId={parseInt(process.env.FEATURED_PRODUCTS_FEATURED_CATEGORY_ID ?? "1")} limit={4}
                                 />
                             </div>
                         </div>

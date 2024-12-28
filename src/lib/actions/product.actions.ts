@@ -83,8 +83,6 @@ export async function placeOrder(mainData: TY_OrderUserDetails, cartItems: TY_Ca
             data: detailData
         })
 
-        // ToDo: Update Stock of products
-
         await prisma.$transaction(
             cartItems.map((item) =>
                 prisma.inventories.update({
