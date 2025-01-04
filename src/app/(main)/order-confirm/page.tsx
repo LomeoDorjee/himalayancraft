@@ -1,3 +1,4 @@
+import Breadcrumbs from '@/components/Breadcrumbs';
 import OrderForm from '@/components/OrderForm';
 import OrderSummary from '@/components/OrderSummary';
 import { currentUser } from '@clerk/nextjs/server';
@@ -18,11 +19,12 @@ export default async function OrderConfirmation() {
   if (!user || user.id == undefined) return
 
   return (
-    <main className="max-w-7xl mx-auto pt-16 pb-24 px-4 sm:px-6 lg:px-8">
+    <main className="px-4 py-2 lg:px-6 xl:px-32 2xl:px-64 ">
+      <Breadcrumbs />
       <div className="max-w-2xl mx-auto lg:max-w-none">
         <h1 className="sr-only">Checkout</h1>
 
-        <div className="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
+        <div className="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16 py-2">
           {/* Order summary */}
           <OrderSummary />
 

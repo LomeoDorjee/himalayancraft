@@ -39,7 +39,7 @@ const Breadcrumbs: React.FC = () => {
     const pathnames = pathname.split('/').filter((x) => x);
 
     return (
-        <nav className="py-1 pl-1 md:pl-2 items-start justify-start">
+        <nav className="py-1 pl-1 md:pl-2 items-start justify-start mb-2">
             <ol className="flex text-sm">
                 <BreadcrumbItem href="/" text="Home" />
                 {pathnames.map((value, index) => {

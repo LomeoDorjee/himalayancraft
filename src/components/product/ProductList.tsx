@@ -86,10 +86,19 @@ const ProductList = ({
       filteredData = filteredData.filter(product => {
         return product.categoryslug.toLowerCase() === categoryId.toLowerCase();
       });
-    } else if (categoryId && categoryId != 0 && typeof categoryId === 'number') {
-      filteredData = filteredData.filter(product => {
-        return parseInt(product.categoryid) === categoryId;
-      });
+    } else if (categoryId && typeof categoryId === 'number') {
+      // Sort By Latest (New)
+      if (categoryId == 0) {
+        filteredData = filteredData.sort((a, b) => {
+          if (a.id < b.id) return 1;
+          if (a.id > b.id) return -1;
+          return 0;
+        });
+      } else {
+        filteredData = filteredData.filter(product => {
+          return parseInt(product.categoryid) === categoryId;
+        });
+      }
     }
 
     // // Total Record //
@@ -97,28 +106,28 @@ const ProductList = ({
 
     if (searchParams?.sort && searchParams?.sort != 'none') {
       switch (searchParams.sort) {
-        case "asc price":
+        case "asc_price":
           filteredData = filteredData.sort((a, b) => {
             if (a.price < b.price) return -1;
             if (a.price > b.price) return 1;
             return 0;
           });
           break;
-        case "desc price":
+        case "desc_price":
           filteredData = filteredData.sort((a, b) => {
             if (a.price < b.price) return 1;
             if (a.price > b.price) return -1;
             return 0;
           });
           break;
-        case "asc updated_at":
+        case "asc_updated_at":
           filteredData = filteredData.sort((a, b) => {
             if (a.id < b.id) return -1;
             if (a.id > b.id) return 1;
             return 0;
           });
           break;
-        case "desc updated_at":
+        case "desc_updated_at":
           filteredData = filteredData.sort((a, b) => {
             if (a.id < b.id) return 1;
             if (a.id > b.id) return -1;
@@ -127,12 +136,12 @@ const ProductList = ({
           break;
         default: return
       }
+    } else {
       filteredData = filteredData.sort((a, b) => {
         if (a.name < b.name) return -1;
         if (a.name > b.name) return 1;
         return 0;
       });
-
     }
 
     const mainLimit = searchParams?.limit ? searchParams.limit : (limit ?? PRODUCT_PER_PAGE)
@@ -198,7 +207,9 @@ const ProductList = ({
           />
         ))
           : (
-            <ProductSkeleton />
+            <div className="text-center w-full md:col-span-3 lg:col-span-4 h-60 align-middle items-center shadow-md rounded-lg border-1 border-gray-600">
+              <p className="block align-middle items-center">No Product Found!</p>
+            </div>
           )}
 
 

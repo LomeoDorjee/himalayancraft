@@ -154,7 +154,7 @@ export function InputForm({ orderId, refresh }: Props) {
                                 <div>
                                     <Select onValueChange={(e) => handleStatusChange(e)} disabled={loading}>
                                         <SelectTrigger className="full">
-                                            <SelectValue placeholder={details[0]?.status?.replaceAll("_", "")} />
+                                            <SelectValue placeholder={details[0]?.status?.replaceAll("_", " ")} />
                                         </SelectTrigger>
                                         <SelectContent>
                                             <SelectGroup>

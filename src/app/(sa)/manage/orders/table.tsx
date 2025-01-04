@@ -58,7 +58,7 @@ export function DataTable({ searchParams, data }: TableProps) {
                         {order.shipping_address}
                     </span>
 
-                    <span className="rounded-full border text-center border-lama px-3 p-1">{order.status}</span>
+                    <span className="rounded-full border text-center border-lama px-3 p-1">{order.status?.replaceAll("_", " ")}</span>
                 </Link>
             )) : (
                 <>

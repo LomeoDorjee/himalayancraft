@@ -7,6 +7,8 @@ import { OrderDetailValidation } from "@/lib/validation"
 import { redirect } from "next/navigation"
 import { useCallback, useState } from "react"
 import { useFormStatus } from "react-dom"
+import { Input } from "./ui/input"
+import { Textarea } from "./ui/textarea"
 
 type MainDataType = TY_OrderUserDetails
 
@@ -90,18 +92,18 @@ export default function OrderForm({
 
 
     return (
-        <form action={formSubmit} className="mt-10 lg:mt-0">
+        <form action={formSubmit} className="">
             <div>
                 <h2 className="text-lg font-medium text-gray-900">Contact information</h2>
 
-                <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
+                <div className="mt-4 grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-2">
 
                     <div>
                         <label htmlFor="first-name" className="block text-sm font-medium text-gray-700">
                             First name
                         </label>
                         <div className="mt-1">
-                            <input
+                            <Input
                                 type="text"
                                 id="first-name"
                                 name="first-name"
@@ -118,7 +120,7 @@ export default function OrderForm({
                             Last name
                         </label>
                         <div className="mt-1">
-                            <input
+                            <Input
                                 type="text"
                                 id="last-name"
                                 name="last-name"
@@ -136,14 +138,14 @@ export default function OrderForm({
                             Email address
                         </label>
                         <div className="mt-1">
-                            <input
+                            <Input
                                 type="email"
                                 id="email-address"
                                 name="email-address"
                                 autoComplete="email"
                                 className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                 required
-                                value={userEmail}
+                                value={mainData.email}
                                 onChange={(e) => handleChange('email', e.target.value)}
                             />
                         </div>
@@ -154,23 +156,24 @@ export default function OrderForm({
             </div>
 
 
-            <div className="my-10 border-t border-b border-gray-200 py-10">
+            <div className="my-5 border-t border-b border-gray-200 py-5">
                 <h2 className="text-lg font-medium text-gray-900">Shipping information</h2>
 
                 <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
 
                     <div className="sm:col-span-2">
                         <label htmlFor="address" className="block text-sm font-medium text-gray-700">
-                            Address
+                            Address <span className="inline-flex text-red-700">*</span>
                         </label>
                         <div className="mt-1">
-                            <textarea id="address"
+                            <Textarea id="address"
                                 rows={4}
                                 className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Shipping Address"
                                 onChange={(e) => handleChange('shipping_address', e.target.value)}
                                 value={mainData.shipping_address}
+                                autoFocus
                             >
-                            </textarea>
+                            </Textarea>
                         </div>
                     </div>
 
@@ -179,7 +182,7 @@ export default function OrderForm({
                             City
                         </label>
                         <div className="mt-1">
-                            <input
+                            <Input
                                 type="text"
                                 name="city"
                                 id="city"
@@ -216,7 +219,7 @@ export default function OrderForm({
                             State / Province
                         </label>
                         <div className="mt-1">
-                            <input
+                            <Input
                                 type="text"
                                 name="region"
                                 id="region"
@@ -233,7 +236,7 @@ export default function OrderForm({
                             Postal code
                         </label>
                         <div className="mt-1">
-                            <input
+                            <Input
                                 type="number"
                                 name="postal-code"
                                 id="postal-code"
@@ -250,7 +253,7 @@ export default function OrderForm({
                             Phone
                         </label>
                         <div className="mt-1">
-                            <input
+                            <Input
                                 type="number"
                                 name="phone"
                                 id="phone"

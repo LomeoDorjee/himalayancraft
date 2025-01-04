@@ -1,4 +1,4 @@
-import { Barcode, ChevronDown, ChevronUp, GalleryVertical, Home, Layout, ListCheck, Mountain, Tag, User2 } from "lucide-react"
+import { Barcode, ChevronDown, ChevronUp, Footprints, GalleryVertical, Home, Layout, ListCheck, Mountain, ShoppingBasket, Tag, User2 } from "lucide-react"
 
 import {
     Sidebar,
@@ -23,7 +23,7 @@ import Link from "next/link"
 const items = [
     {
         title: "Home",
-        url: "/",
+        url: "/manage",
         icon: Home,
     },
     {
@@ -50,6 +50,16 @@ const items = [
         title: "Slider",
         url: "/manage/sliders",
         icon: GalleryVertical,
+    },
+    {
+        title: "Footer",
+        url: "/manage/footers",
+        icon: Footprints,
+    },
+    {
+        title: "Back To Site",
+        url: "/",
+        icon: ShoppingBasket,
     },
 ]
 

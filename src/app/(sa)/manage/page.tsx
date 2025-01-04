@@ -1,7 +1,7 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import { redeploy } from "@/lib/actions/deploy.action"
-import { Barcode, GalleryVertical, Home, Layout, ListCheck, Tag } from "lucide-react"
+import { Barcode, Footprints, GalleryVertical, Home, Layout, ListCheck, Tag } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -36,6 +36,11 @@ const items = [
     url: "/manage/sliders",
     icon: GalleryVertical,
   },
+  {
+    title: "Footer",
+    url: "/manage/footers",
+    icon: Footprints,
+  },
 ]
 
 export default function Page() {
@@ -49,9 +54,9 @@ export default function Page() {
             <Link
               href={item.url}
               key={index}
-              className="rounded-md border px-32 py-16 flex flex-col justify-between items-center text-3xl gap-4 text-slate-800 shadow-md hover:shadow-xl animate">
+              className="rounded-md border px-32 py-16 justify-start items-center text-3xl gap-4 text-slate-800 shadow-md hover:shadow-xl animate flex flex-row">
               <item.icon />
-              {item.title}
+              <p>{item.title}</p>
             </Link>
           ))
         }

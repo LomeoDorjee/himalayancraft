@@ -157,3 +157,15 @@ model tags {
   id   Int    @id @default(autoincrement())
   name String @db.VarChar(50)
 }
+
+model footer {
+  id           Int    @id @default(autoincrement())
+  address1     String @db.VarChar(255)
+  address2     String @db.VarChar(255)
+  supportemail String @db.VarChar(255)
+  phone        String @db.VarChar(255)
+  fb           String @db.VarChar(255)
+  ig           String @db.VarChar(255)
+  yt           String @db.VarChar(255)
+  x            String @db.VarChar(255)
+}

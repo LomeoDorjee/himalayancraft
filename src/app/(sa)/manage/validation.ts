@@ -43,6 +43,55 @@ export const TagValidation = z.object({
             .trim(),
 })
 
+export const FooterValidation = z.object({
+    id:
+        z.number(),
+    address1:
+        z.string({
+            required_error: "Address 1 is required",
+            invalid_type_error: "Address 1 must be a string",
+        })
+            .trim(),
+    address2:
+        z.string({
+            required_error: "Address 2 is required",
+            invalid_type_error: "Address 2 must be a string",
+        })
+            .trim(),
+    supportemail:
+        z.string({
+            required_error: "Email is required",
+            invalid_type_error: "Email must be a string",
+        })
+            .trim(),
+    phone:
+        z.string({
+            required_error: "Phone is required",
+            invalid_type_error: "Phone must be a string",
+        })
+            .trim(),
+    fb:
+        z.string({
+            invalid_type_error: "FB Link must be a string",
+        })
+            .trim().optional(),
+    ig:
+        z.string({
+            invalid_type_error: "IG Link must be a string",
+        })
+            .trim().optional(),
+    yt:
+        z.string({
+            invalid_type_error: "YT Link must be a string",
+        })
+            .trim().optional(),
+    x:
+        z.string({
+            invalid_type_error: "X Link must be a string",
+        })
+            .trim().optional(),
+})
+
 export const InventoryValidation = z.object({
     stock:
         z.string(),

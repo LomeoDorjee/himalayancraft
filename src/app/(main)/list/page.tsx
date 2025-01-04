@@ -45,10 +45,10 @@ const ListPage = async ({ searchParams }: { searchParams: any }) => {
         </div>
       </div> */}
 
-      <div className="flex md:flex-row flex-col items-start justify-start gap-3">
+      <div className="flex md:flex-col flex-col items-start justify-start gap-3">
 
         {/* FILTER */}
-        <div className="md:w-1/5 w-full bg-white p-2 rounded shadow py-2">
+        <div className="w-full bg-white p-2 rounded shadow py-2">
           <Filter categories={categories} tags={tags} />
         </div>
 

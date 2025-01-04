@@ -1,15 +1,8 @@
 
 
-
-Footer Dynamic
 Order Redesign: integrate with profile
-hide on scroll: NavBar
-Cloudinary Images & carousal
 migrate database
-Remove /admin from route
-Apple Look
 Reports
-Profile Page
 Default Pictures when image unavailable
 npm cache clean --force
 Contact us form -- working.

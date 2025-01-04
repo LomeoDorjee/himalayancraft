@@ -11,6 +11,13 @@ import {
 } from "@/components/ui/accordion"
 import MultiRangeSlider from "./common/MultiRangeSlider";
 import { List } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
 const Filter = ({ categories, tags }: {
   categories: TY_Category[]
@@ -22,12 +29,11 @@ const Filter = ({ categories, tags }: {
 
   const [toogleFilter, setToogleFilter] = useState<boolean>(false);
 
-  const handleFilterChange = (
-    e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
+  const handleSortByChange = (
+    e: string
   ) => {
-    const { name, value } = e.target;
     const params = new URLSearchParams(searchParams);
-    params.set(name, value);
+    params.set("sort", e);
     replace(`${pathname}?${params.toString()}`);
   };
 
@@ -83,66 +89,80 @@ const Filter = ({ categories, tags }: {
   }, [checkedTags, pathname, replace, searchParams]);
 
   return (
-    <div className="flex flex-row justify-between w-full">
 
-      <div className="w-full">
-        <h2 className="text-xl font-semibold px-2 my-2 flex flex-row justify-between text-center">
-          <span>Filters</span>
-          <List onClick={() => setToogleFilter(!toogleFilter)} className="block md:hidden" />
-        </h2>
-        <div className={`mb-4 px-2 max-sm:${toogleFilter ? "block" : "hidden"} transition-all duration-300`}>
-          <Accordion type="multiple" className="w-full"
-          // defaultValue={["item-1", "item-2"]}
-          >
-            <AccordionItem value="item-1">
-              <AccordionTrigger>Category</AccordionTrigger>
-              <AccordionContent>
-                <ul className="p-1 flex flex-col gap-3">
-                  {
-                    categories && categories.map((cat, index) => (
-                      <li className="items-center flex" key={index}>
-                        <input type="checkbox" className="mr-2 rounded-md items-center" onChange={() => handleCategoryChange(cat.slug)} />
-                        {cat.title}
-                      </li>
-                    ))
-                  }
-                </ul>
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-0">
-              <AccordionTrigger>Tags</AccordionTrigger>
-              <AccordionContent>
-                <ul className="p-1 flex flex-col gap-3">
-                  {
-                    tags && tags.map((tag, index) => (
-                      <li className="items-center flex" key={index}>
-                        <input type="checkbox" className="mr-2 rounded-md items-center" onChange={() => handleTagChange(tag.name)} />
-                        {tag.name}
-                      </li>
-                    ))
-                  }
-                </ul>
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-2">
+    <div className="w-full">
+      <h2 className="text-xl font-semibold px-2 my-2 flex flex-row justify-between text-center">
+        <span>Filters</span>
+        <List onClick={() => setToogleFilter(!toogleFilter)} className="block" />
+      </h2>
+      <div className={`mb-4 px-2 ${toogleFilter ? "block" : "hidden"} transition-all duration-300`}>
+        <Accordion type="multiple" className="w-full"
+        // defaultValue={["item-1", "item-2"]}
+        >
+          <AccordionItem value="item-9">
+            <AccordionTrigger>Sort By</AccordionTrigger>
+            <AccordionContent>
+              <Select onValueChange={e => handleSortByChange(e)}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Latest" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="asc_price">Price (Low to High)</SelectItem>
+                  <SelectItem value="desc_price">Price (High to Low)</SelectItem>
+                  <SelectItem value="desc_updated_at">Latest</SelectItem>
+                  <SelectItem value="asc_updated_at">Oldest</SelectItem>
+                </SelectContent>
+              </Select>
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-1">
+            <AccordionTrigger>Category</AccordionTrigger>
+            <AccordionContent>
+              <ul className="p-1 flex flex-col gap-3 md:grid md:grid-cols-3">
+                {
+                  categories && categories.map((cat, index) => (
+                    <li className="items-center flex" key={index}>
+                      <input type="checkbox" className="mr-2 rounded-md items-center" onChange={() => handleCategoryChange(cat.slug)} />
+                      {cat.title}
+                    </li>
+                  ))
+                }
+              </ul>
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-0">
+            <AccordionTrigger>Tags</AccordionTrigger>
+            <AccordionContent>
+              <ul className="p-1 flex flex-col gap-3 md:grid md:grid-cols-3">
+                {
+                  tags && tags.map((tag, index) => (
+                    <li className="items-center flex" key={index}>
+                      <input type="checkbox" className="mr-2 rounded-md items-center" onChange={() => handleTagChange(tag.name)} />
+                      {tag.name}
+                    </li>
+                  ))
+                }
+              </ul>
+            </AccordionContent>
+          </AccordionItem>
+          {/* <AccordionItem value="item-2">
               <AccordionTrigger>Price Range</AccordionTrigger>
               <AccordionContent>
                 <MultiRangeSlider min={0} max={10000} onChange={handleRangeChange} />
               </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-3">
-              <AccordionTrigger>Availability</AccordionTrigger>
-              <AccordionContent>
-                <ul className="p-2">
-                  <li><input type="checkbox" id="in_stock" className="mr-2 rounded-md" />In Stock</li>
-                </ul>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </div>
+            </AccordionItem> */}
+          <AccordionItem value="item-3">
+            <AccordionTrigger>Availability</AccordionTrigger>
+            <AccordionContent>
+              <ul className="p-2">
+                <li><input type="checkbox" id="in_stock" className="mr-2 rounded-md" />In Stock</li>
+              </ul>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </div>
-
     </div>
+
   );
 };
 

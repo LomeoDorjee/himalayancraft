@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const Privacy = async () => {
 
     return (
-        <div className="px-4 py-2 lg:px-6 xl:px-32 2xl:px-64 ">
+        <div className="px-4 py-2 lg:px-6 xl:px-32 2xl:px-64">
             <Breadcrumbs />
 
             <div className="p-2">
@@ -21,7 +21,7 @@ const Privacy = async () => {
 
                 <section className="mb-6">
                     <h2 className="text-2xl font-semibold mb-2">1. Introduction</h2>
-                    <p>Welcome to {process.env.NEXT_PUBLIC_APP_NAME}! We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice or our practices with regard to your personal information, please contact us at [support@craftnepal.com].</p>
+                    <p>Welcome to {process.env.NEXT_PUBLIC_APP_NAME}! We are committed to protecting your personal information and your right to privacy. If you have any questions or concerns about this privacy notice or our practices with regard to your personal information, please contact us at <a href="mailto:support@himalayancraftshop.com" className='text-blue-600'>support@himalayancraftshop.com</a>.</p>
                 </section>
 
                 <section className="mb-6">

@@ -5,47 +5,42 @@ export const OrderDetailValidation = z.object({
         required_error: "Email is required",
     })
         .min(2, { message: "Email: Must be 2 or more characters long" })
-        .max(25, { message: "Email: Must be less than 10 characters" })
+        .max(50, { message: "Email: Must be less than 50 characters" })
         .trim(),
     firstname: z.string({
         required_error: "First Name is required",
         invalid_type_error: "First Name must be non numeric",
     })
         .min(2, { message: "First Name: Must be 2 or more characters long" })
-        .max(25, { message: "First Name: Must be less than 25 characters" })
+        .max(50, { message: "First Name: Must be less than 50 characters" })
         .trim(),
     lastname: z.string({
         required_error: "Last Name is required",
         invalid_type_error: "Last Name must be a string",
     })
-        .min(2, { message: "Last Name: Must be 2 or more characters long" })
-        .max(25, { message: "Last Name: Must be less than 25 characters" })
+        .max(50, { message: "Last Name: Must be less than 50 characters" })
         .trim(),
     shipping_address: z.string({
         required_error: "Shipping Address is required",
         invalid_type_error: "Shipping Address must be a string",
     })
-        .min(5, { message: "Shipping Address: Must be 5 or more characters long" })
-        .max(100, { message: "Shipping Aaddress: Must be less than 100 characters" })
+        .max(200, { message: "Shipping Aaddress: Must be less than 200 characters" })
         .trim(),
     city: z.string({
         required_error: "City is required",
     })
-        .min(2, { message: "City: Must be 2 or more characters long" })
-        .max(20, { message: "City: Must be less than 20 characters" })
+        .max(40, { message: "City: Must be less than 40 characters" })
         .trim(),
     country: z.string({
         required_error: "Country is required",
     })
-        .min(2, { message: "Country: Must be 2 or more characters long" })
-        .max(20, { message: "Country: Must be less than 20 characters" })
+        .max(40, { message: "Country: Must be less than 40 characters" })
         .trim(),
     state: z.string({
         required_error: "State is required",
         invalid_type_error: "State must be in characters",
     })
-        .min(2, { message: "State: Must be 2 or more characters long" })
-        .max(15, { message: "State: Must be less than 15 characters" })
+        .max(30, { message: "State: Must be less than 30 characters" })
         .trim(),
     postalcode: z.number({
         required_error: "Postal Code is Required"

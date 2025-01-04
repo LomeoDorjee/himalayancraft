@@ -728,3 +728,75 @@ export async function updateSlidersFiles() {
         }
     }
 }
+
+
+// {/* Products Footer */}
+export async function getFooter() {
+    try {
+
+        const data: TY_Footer[] = await prisma.footer.findMany()
+
+        return {
+            data: data,
+            status: ""
+        }
+    } catch (e) {
+        return {
+            data: [],
+            status: catchErrorMessage(e)
+        }
+    }
+}
+
+export async function upsertFooter(values: TY_Footer) {
+    try {
+        await prisma.footer.update({
+            where: {
+                id: values.id
+            },
+            data: {
+                address1: values.address1,
+                address2: values.address2,
+                supportemail: values.supportemail,
+                phone: values.phone,
+                x: values.x ? values.x : "",
+                fb: values.fb ? values.fb : "",
+                ig: values.ig ? values.ig : "",
+                yt: values.yt ? values.yt : "",
+            },
+        })
+
+        revalidatePath('/manage/footers')
+
+        return {
+            data: [],
+            status: "success"
+        }
+    } catch (e) {
+        return {
+            data: [],
+            status: catchErrorMessage(e)
+        }
+    }
+}
+
+export async function updateFooterFile() {
+    try {
+        const Footer = await prisma.footer.findMany()
+
+        const content = `const Footer = ${JSON.stringify(Footer, null, 2)};\n\nexport default Footer;`;
+        // Save to file 
+        const filePath = path.join(process.cwd(), 'src/constants', 'footerConstant.js');
+
+        fs.writeFileSync(filePath, content);
+
+        return {
+            status: ""
+        }
+
+    } catch (e) {
+        return {
+            status: catchErrorMessage(e)
+        }
+    }
+}

@@ -145,3 +145,15 @@ type TY_Tags = {
     id: number
     name: string
 }
+
+type TY_Footer = {
+    id: number
+    address1: string
+    address2: string
+    supportemail: string
+    phone: string
+    x?: string
+    fb?: string
+    ig?: string
+    yt?: string
+}
