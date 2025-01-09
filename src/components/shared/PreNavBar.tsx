@@ -13,8 +13,17 @@ import {
 } from "@/components/ui/navigation-menu"
 
 import Categories from "../../constants/categoriesConstant.js"
+import { currentUser } from '@clerk/nextjs/server'
 
 export async function PreNavBar() {
+
+    const user = await currentUser()
+
+    const userIds: string[] = process.env.SUPER_ADMIN_IDS
+        ? process.env.SUPER_ADMIN_IDS.split(",").map((id) => id.trim())
+        : [];
+
+    console.table(user?.id)
 
     const categories: TY_Category[] = Categories
 
@@ -25,9 +34,15 @@ export async function PreNavBar() {
                 <div className="flex gap-1 justify-start">
                     <div className="justify-between items-center flex w-auto" id="mobile-menu-2">
                         <ul className="flex font-normal flex-row mt-0">
-                            <li>
-                                <Link href="/" className="block md:pr-4 md:pl-3 rounded bg-primary-700 bg-transparent text-primary-700 p-2 dark:text-white" aria-current="page">Home</Link>
-                            </li>
+                            {userIds.includes(user?.id ? user.id : "") ? (
+                                <li>
+                                    <Link href="/manage" className="block md:pr-4 md:pl-3 rounded bg-primary-700 bg-transparent text-primary-700 p-2 dark:text-white" aria-current="page">Admin</Link>
+                                </li>
+                            ) : (
+                                <li>
+                                    <Link href="/" className="block md:pr-4 md:pl-3 rounded bg-primary-700 bg-transparent text-primary-700 p-2 dark:text-white" aria-current="page">Home</Link>
+                                </li>
+                            )}
                             <li className='hidden md:flex'>
                                 <Link href="/list" className="block md:pr-4 md:pl-3 rounded bg-primary-700 bg-transparent text-primary-700 p-2 dark:text-white" aria-current="page">List</Link>
                             </li>
@@ -37,13 +52,14 @@ export async function PreNavBar() {
                             <li className='hidden md:flex'>
                                 <Link href="/contact-us" className="hidden md:block md:pr-4 md:pl-3 rounded bg-primary-700 bg-transparent text-primary-700 p-2 dark:text-white" aria-current="page">Contact us</Link>
                             </li>
+
                         </ul>
 
 
                         <NavigationMenu className='z-50'>
                             <NavigationMenuList>
                                 <NavigationMenuItem>
-                                    <NavigationMenuTrigger className='md:pr-2 md:pl-3 rounded bg-primary-700 bg-transparent text-primary-700 p-2 dark:text-white w-full'>Categories</NavigationMenuTrigger>
+                                    <NavigationMenuTrigger className='md:pr-2 md:pl-3 rounded bg-primary-700 bg-transparent text-primary-700 p-2 text-md font-normal dark:text-white w-full'>Categories</NavigationMenuTrigger>
                                     <NavigationMenuContent>
 
                                         <ul

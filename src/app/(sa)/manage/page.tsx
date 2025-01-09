@@ -1,7 +1,7 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import { redeploy } from "@/lib/actions/deploy.action"
-import { Barcode, Footprints, GalleryVertical, Home, Layout, ListCheck, Tag } from "lucide-react"
+import { Barcode, BookAIcon, BookCopy, Footprints, GalleryVertical, Home, Layout, ListCheck, Tag } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -54,12 +54,20 @@ export default function Page() {
             <Link
               href={item.url}
               key={index}
-              className="rounded-md border px-32 py-16 justify-start items-center text-3xl gap-4 text-slate-800 shadow-md hover:shadow-xl animate flex flex-row">
+              className="rounded-md border px-32 py-8 md:py-16 justify-start items-center text-3xl gap-4 text-slate-800 shadow-md hover:shadow-xl animate flex flex-row">
               <item.icon />
               <p>{item.title}</p>
             </Link>
           ))
         }
+
+        <Link
+          href={`/manage`}
+          // key={index}
+          className="rounded-md border px-32 py-8 md:py-16 justify-start items-center text-3xl gap-4 text-slate-800 shadow-md hover:shadow-xl animate flex flex-row">
+          <BookCopy />
+          <p>Reports (WIP)</p>
+        </Link>
 
         <form
           action={redeploy}
