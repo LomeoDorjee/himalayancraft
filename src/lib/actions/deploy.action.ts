@@ -19,7 +19,7 @@ export async function redeploy(formdata: FormData) {
         export NVM_DIR="$HOME/.nvm" &&
         [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" &&
         nvm use default &&
-        nvm run build &&
+        npm run build &&
         pm2 restart hc
     `;
 
